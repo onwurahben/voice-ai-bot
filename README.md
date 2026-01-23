@@ -4,8 +4,7 @@ emoji: 🎙️
 colorFrom: blue
 colorTo: purple
 sdk: docker
-sdk_version: "1.0"
-app_file: app/server.py
+app_port: 7860
 pinned: false
 license: mit
 tags:

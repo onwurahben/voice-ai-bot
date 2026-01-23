@@ -1,5 +1,7 @@
 import os
+import json
 from google.cloud import texttospeech
+from google.oauth2 import service_account
 from utils.logger import get_logger
 
 logger = get_logger("GoogleTTS")
@@ -15,8 +17,19 @@ def text_to_speech(text, voice_name="en-US-Journey-F"):
     try:
         logger.info(f"Google TTS request: {text[:50]}... with voice: {voice_name}")
         
-        # Instantiates a client
-        client = texttospeech.TextToSpeechClient()
+        # Check if credentials are provided as JSON content (Hugging Face Spaces)
+        google_creds_json = os.getenv("GOOGLE_CREDENTIALS")
+        
+        if google_creds_json:
+            # Load credentials from JSON string (Hugging Face Secret)
+            credentials = service_account.Credentials.from_service_account_info(
+                json.loads(google_creds_json)
+            )
+            client = texttospeech.TextToSpeechClient(credentials=credentials)
+        else:
+            # Fallback to default auto-discovery (local development)
+            # Instantiates a client
+            client = texttospeech.TextToSpeechClient()
 
         # Set the text input to be synthesized
         synthesis_input = texttospeech.SynthesisInput(text=text)
