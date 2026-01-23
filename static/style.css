@@ -1,0 +1,307 @@
+/* Light mode */
+body {
+    background-color: #d6ddec;
+    color: #121717;
+}
+
+/* Dark mode */
+.dark-mode {
+    background-color: #121717;
+    color: #c9c9c9;
+}
+
+.main-viewport {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Initial center state */
+    transition: justify-content 0.5s ease;
+}
+
+.main-viewport.chat-active {
+    justify-content: flex-start;
+    /* Transition to top-aligned */
+}
+
+#chat-window {
+    position: relative;
+    max-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: transparent !important;
+    transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1), margin 0.5s ease;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera by default */
+#chat-window::-webkit-scrollbar {
+    width: 6px;
+}
+
+#chat-window::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#chat-window::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+/* Show faint scrollbar thumb ONLY when scrolling */
+#chat-window.scrolling::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.dark-mode #chat-window.scrolling::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+#chat-window.active {
+    max-height: 65vh;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+}
+
+/* =========================
+   MESSAGE LAYOUT (FIXED)
+   ========================= */
+
+.message-line {
+    padding-bottom: 8px;
+    width: 100%;
+    /* FIX: allow full-width so alignment works */
+    word-break: break-word;
+    display: flex;
+}
+
+/* User messages align right via flexbox (NO rotation) */
+.message-line.my-text {
+    justify-content: flex-end;
+    /* FIX: replaces row-reverse + rotation */
+}
+
+/* Base bubble */
+.message-box {
+    padding: 12px;
+    border-radius: 15px;
+    border-top-left-radius: 0;
+    display: inline-block;
+    position: relative;
+    background-color: #efefef;
+    min-width: 26px;
+    word-wrap: break-word;
+    flex-grow: 0;
+    white-space: pre-wrap;
+    max-width: 70%;
+}
+
+/* User bubble shape + color */
+.message-box.my-text {
+    background-color: #e7f9d8;
+    border-top-right-radius: 0;
+    border-top-left-radius: 15px;
+    /* FIX: directional shape without rotation */
+}
+
+/* REMOVED ROTATION — this was flipping text upside down */
+/*
+.message-box.my-text {
+    transform: rotateY(180deg);
+}
+*/
+
+/* REMOVED — no longer needed since rotation is gone */
+/*
+.me {
+    transform: scale(-1, 1);
+}
+*/
+
+.message-box.my-text.dark {
+    background-color: #0f4c9e;
+}
+
+/* AI bubble dark mode */
+.message-box.dark {
+    background-color: #263443;
+}
+
+/* =========================
+   RECORD BUTTON (UNCHANGED)
+   ========================= */
+
+.circular-btn {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: none;
+    padding: 0;
+    animation: soft-bounce 2s infinite ease-in-out, pulse-radiate 2s infinite;
+}
+
+@keyframes soft-bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Red pulse when recording */
+.circular-btn.recording {
+    animation: pulse-red 1s infinite !important;
+}
+
+@keyframes pulse-red {
+    0% {
+        box-shadow: 0 0 0 0 rgba(229, 18, 18, 0.6);
+    }
+
+    70% {
+        box-shadow: 0 0 0 20px rgba(229, 18, 18, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(229, 18, 18, 0);
+    }
+}
+
+@keyframes pulse-radiate {
+    0% {
+        box-shadow: 0 0 0 0 rgba(18, 94, 229, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(18, 94, 229, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(18, 94, 229, 0);
+    }
+}
+
+.circular-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    background-color: #f8f9fa;
+    animation: none;
+}
+
+/* =========================
+   LOADING DOTS (FIXED)
+   ========================= */
+
+.loading-animation {
+    padding-bottom: 8px;
+    display: none;
+    width: 100%;
+}
+
+.loading-animation.active {
+    display: flex;
+}
+
+/* User loading dots align right */
+#loading-dots-user.my-loading {
+    justify-content: flex-end;
+}
+
+/* Dots container — NOT a chat bubble anymore */
+.loading-dots {
+    padding: 0;
+    /* FIX: remove bubble padding */
+    border-radius: 0;
+    /* FIX: remove bubble shape */
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+}
+
+/* REMOVED rotation — caused upside-down visuals */
+/*
+.loading-dots.my-loading {
+    transform: rotateY(180deg);
+}
+*/
+
+.dot {
+    width: 7px;
+    height: 7px;
+    margin: 0 2px;
+    border-radius: 50%;
+    animation: bounce 1.5s ease-in-out infinite;
+    background: #5a5a5a;
+}
+
+.dark-dot {
+    background: #c9c9c9;
+}
+
+.dot:nth-of-type(1) {
+    animation-delay: 0s;
+}
+
+.dot:nth-of-type(2) {
+    animation-delay: 0.2s;
+}
+
+.dot:nth-of-type(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+
+    0%,
+    40% {
+        transform: translateY(0);
+    }
+
+    20% {
+        transform: translateY(-10px);
+    }
+}
+
+/* =========================
+   MISC (UNCHANGED)
+   ========================= */
+
+.replay-btn {
+    background: transparent;
+    border: none;
+    color: #125ee5;
+    font-size: 1.2rem;
+    padding: 0;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.replay-btn:hover {
+    color: #0d4ab5;
+}
+
+.dark {
+    background-color: #263443;
+}
+
+.col-12.text-center.d-flex.justify-content-around {
+    padding: 0 300px;
+}
+
+#voice-options {
+    border-radius: 4px;
+}
+
+#voice-options:hover {
+    background-color: #e9e9e9;
+}

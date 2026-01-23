@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>AI Voice Assistant</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="../static/style.css?v=1.2" />
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- Custom Script -->
+    <script src="../static/script.js?v=1.2"></script>
+</head>
+
+<body class="dark-mode">
+    <div class="main-viewport">
+        <div class="container py-4">
+
+            <!-- Header -->
+            <div class="text-center mb-4">
+                <h1>AI Voice Assistant</h1>
+                <p class="lead">
+                    Your personal assistant powered by LLaMA 3, Whisper, and ElevenLabs TTS
+                </p>
+            </div>
+
+            <!-- Controls -->
+            <div class="col-12 text-center d-flex justify-content-around align-items-center mb-4 flex-wrap">
+
+                <!-- Light/Dark Mode Toggle -->
+                <div class="custom-control custom-switch mb-2">
+                    <input type="checkbox" class="custom-control-input" id="light-dark-mode-switch" checked />
+                    <label class="custom-control-label" for="light-dark-mode-switch">
+                        Toggle Light/Dark Mode
+                    </label>
+                </div>
+
+                <!-- Voice Selector -->
+                <div class="d-inline-block mb-2">
+                    <label for="voice-options" class="voice-options-label">Choose a Voice</label>
+                    <select id="voice-options" class="custom-select">
+                        <option value="Rachel">Rachel (Assistant)</option>
+                        <option value="Clyde">Clyde (Narrator)</option>
+                        <option value="Mimi">Mimi (Storyteller)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Chat Window -->
+            <div class="col-12 col-md-8 mx-auto mb-3">
+                <div id="chat-window" class="p-3 overflow-auto dark">
+
+                    <!-- Messages injected here by JS -->
+                    <div id="message-list"></div>
+
+                    <!-- User Loading Dots -->
+                    <div class="loading-animation my-loading" id="loading-dots-user">
+                        <div class="loading-dots my-loading">
+                            <div class="dot dark-dot"></div>
+                            <div class="dot dark-dot"></div>
+                            <div class="dot dark-dot"></div>
+                        </div>
+                    </div>
+
+                    <!-- Assistant Loading Dots -->
+                    <div class="loading-animation" id="loading-dots-ai">
+                        <div class="loading-dots">
+                            <div class="dot dark-dot"></div>
+                            <div class="dot dark-dot"></div>
+                            <div class="dot dark-dot"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Controls -->
+                <div class="d-flex flex-column align-items-center mt-4">
+                    <button id="record-button" class="btn microphone circular-btn">
+                        <i class="fa fa-microphone fa-2x"></i>
+                    </button>
+                    <p class="instruction-text mt-3">Tap the microphone to speak</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

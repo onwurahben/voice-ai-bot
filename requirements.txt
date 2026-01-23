@@ -1,0 +1,20 @@
+# Web framework
+Flask==3.1.2
+
+# Environment variable management
+python-dotenv==1.0.0
+
+# HTTP and utility libraries
+requests==2.31.0
+
+# Groq API client (Python SDK)
+groq==1.0.0
+
+# ElevenLabs TTS client
+elevenlabs==2.30.0
+
+# Google Cloud TTS
+google-cloud-texttospeech==2.14.1
+
+# Deepgram SDK
+deepgram-sdk==3.2.0

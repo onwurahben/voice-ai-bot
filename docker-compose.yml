@@ -1,0 +1,13 @@
+services:
+  voice-assistant:
+    build: .
+    ports:
+      - "7860:7860"
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - ./chat_history.json:/app/chat_history.json
+      - ./google_key.json:/app/google_key.json
+      - ./voice_assistant.log:/app/voice_assistant.log
+    restart: unless-stopped

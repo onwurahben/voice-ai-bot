@@ -1,0 +1,17 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+.env
+db.sqlite3
+.git/
+.gitignore
+.vscode/
+node_modules/
+*.log
+chat_history.json
+google_key.json
