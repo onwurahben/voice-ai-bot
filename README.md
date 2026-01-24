@@ -1,7 +1,7 @@
 ---
 title: AI Voice Assistant
 emoji: 🎙️
-colorFrom: blue
+colorFrom: red
 colorTo: green
 sdk: docker
 app_port: 7860
