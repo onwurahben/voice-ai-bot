@@ -210,7 +210,7 @@ $(document).ready(function () {
             recordingStartTime = Date.now();
 
             recordBtn.addClass('recording');
-            $('.instruction-text').text('Listening...Tap again to send!');
+            $('.instruction-text').text('Listening... Tap again to send!');
 
         } catch (err) {
             console.error('Mic error:', err);
@@ -254,7 +254,7 @@ $(document).ready(function () {
                     const speechRatio = peakCount / samples.length;
 
                     // Thresholds: RMS > 0.02 means some volume, speechRatio > 0.05 means varied audio
-                    const hasSpeech = (rms > 0.02 && speechRatio > 0.05);
+                    const hasSpeech = (rms > 0.01 && speechRatio > 0.03);
 
                     console.log(`VAD Check: RMS=${rms.toFixed(4)}, SpeechRatio=${speechRatio.toFixed(4)}, HasSpeech=${hasSpeech}`);
                     resolve(hasSpeech);
