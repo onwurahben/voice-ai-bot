@@ -7,6 +7,7 @@ import json
 import os
 
 from utils.logger import get_logger
+from utils.prompts import VOICE_ASSISTANT_PROMPT
 
 
 logger = get_logger("MEMORY")
@@ -90,7 +91,8 @@ def get_messages_for_llm(session_id, max_messages=10):
 
     # Prepend system prompt
 
-    messages = [{"role": "system", "content": "You are a helpful VOICE assistant. IMPORTANT RULE: If you receive incomplete phrases, out of context words, or words in another language different from the one the user initially started with: Ask the user politely to repeat that. IF the user EXPLICITLY states that he wants to switch language, then you can switch language."}]
+    prompt = VOICE_ASSISTANT_PROMPT
+    messages = [{"role": "system", "content": prompt}]
 
     messages.extend(trimmed)
     
