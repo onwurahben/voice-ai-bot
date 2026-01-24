@@ -35,18 +35,9 @@ $(document).ready(function () {
     function applyTheme(isDark) {
         if (isDark) {
             body.addClass('dark-mode');
-            chatWindow.addClass('dark');
-
-            // Ensure loading dots match dark mode
-            $('.dot').addClass('dark-dot');
-
             themeSwitch.prop('checked', true);
         } else {
             body.removeClass('dark-mode');
-            chatWindow.removeClass('dark');
-
-            $('.dot').removeClass('dark-dot');
-
             themeSwitch.prop('checked', false);
         }
     }
@@ -94,11 +85,6 @@ $(document).ready(function () {
         // Message bubble
         const boxDiv = $('<div>')
             .addClass(`message-box ${isUser ? 'my-text' : ''}`);
-
-        // Dark mode bubble styling
-        if (body.hasClass('dark-mode')) {
-            boxDiv.addClass('dark');
-        }
 
         boxDiv.text(text);
 

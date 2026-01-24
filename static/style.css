@@ -10,6 +10,45 @@ body {
     color: #c9c9c9;
 }
 
+/* Base bubble (Light mode defaults) */
+.message-box {
+    padding: 12px;
+    border-radius: 15px;
+    border-top-left-radius: 0;
+    display: inline-block;
+    position: relative;
+    background-color: #efefef;
+    color: #121717;
+    min-width: 26px;
+    word-wrap: break-word;
+    flex-grow: 0;
+    white-space: pre-wrap;
+    max-width: 70%;
+}
+
+/* User bubble (Light mode defaults) */
+.message-box.my-text {
+    background-color: #e7f9d8;
+    color: #121717;
+    border-top-right-radius: 0;
+    border-top-left-radius: 15px;
+}
+
+/* Dark mode overrides for bubbles */
+.dark-mode .message-box {
+    background-color: #263443;
+    color: #c9c9c9;
+}
+
+.dark-mode .message-box.my-text {
+    background-color: #0d4a9e;
+    color: #ffffff;
+}
+
+.dark-mode #chat-window {
+    background-color: transparent !important;
+}
+
 .main-viewport {
     min-height: 100vh;
     display: flex;
@@ -81,30 +120,7 @@ body {
     /* FIX: replaces row-reverse + rotation */
 }
 
-/* Base bubble */
-.message-box {
-    padding: 12px;
-    border-radius: 15px;
-    border-top-left-radius: 0;
-    display: inline-block;
-    position: relative;
-    background-color: #efefef;
-    min-width: 26px;
-    word-wrap: break-word;
-    flex-grow: 0;
-    white-space: pre-wrap;
-    max-width: 70%;
-}
-
-/* User bubble shape + color */
-.message-box.my-text {
-    background-color: #e7f9d8;
-    border-top-right-radius: 0;
-    border-top-left-radius: 15px;
-    /* FIX: directional shape without rotation */
-}
-
-/* REMOVED ROTATION — this was flipping text upside down */
+/* REMOVED rotation — this was flipping text upside down */
 /*
 .message-box.my-text {
     transform: rotateY(180deg);
@@ -117,15 +133,6 @@ body {
     transform: scale(-1, 1);
 }
 */
-
-.message-box.my-text.dark {
-    background-color: #0f4c9e;
-}
-
-/* AI bubble dark mode */
-.message-box.dark {
-    background-color: #263443;
-}
 
 /* =========================
    RECORD BUTTON (UNCHANGED)
@@ -244,7 +251,7 @@ body {
     background: #5a5a5a;
 }
 
-.dark-dot {
+.dark-mode .dot {
     background: #c9c9c9;
 }
 
@@ -290,9 +297,7 @@ body {
     color: #0d4ab5;
 }
 
-.dark {
-    background-color: #263443;
-}
+
 
 .col-12.text-center.d-flex.justify-content-around {
     padding: 0 300px;
