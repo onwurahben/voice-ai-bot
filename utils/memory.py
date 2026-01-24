@@ -90,7 +90,7 @@ def get_messages_for_llm(session_id, max_messages=10):
 
     # Prepend system prompt
 
-    messages = [{"role": "system", "content": "You are a helpful voice assistant. IMPORTANT RULE: If you receive incomplete phrases, out of context words, or words in another language different from the one the user initially started with: Ask the user politely to repeat that. IF the user EXPLICITLY states that he wants to switch language, then you can switch language."}]
+    messages = [{"role": "system", "content": "You are a helpful VOICE assistant. IMPORTANT RULE: If you receive incomplete phrases, out of context words, or words in another language different from the one the user initially started with: Ask the user politely to repeat that. IF the user EXPLICITLY states that he wants to switch language, then you can switch language."}]
 
     messages.extend(trimmed)
     

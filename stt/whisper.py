@@ -35,7 +35,7 @@ def speech_to_text(audio_bytes):
     try:
         response = groq_client.audio.transcriptions.create(
             file=("audio.wav", audio_bytes),
-            model="whisper-large-v3"
+            model="whisper-large-v3-turbo"
         )
         transcribed_text = response.text.strip()
         logger.info(f"Transcription successful: {transcribed_text[:50]}...")

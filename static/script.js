@@ -253,7 +253,7 @@ $(document).ready(function () {
                     const rms = Math.sqrt(sum / samples.length);
                     const speechRatio = peakCount / samples.length;
 
-                    // Thresholds: RMS > 0.02 means some volume, speechRatio > 0.05 means varied audio
+                    // Thresholds: RMS > 0.01 means some volume, speechRatio > 0.05 means varied audio
                     const hasSpeech = (rms > 0.01 && speechRatio > 0.03);
 
                     console.log(`VAD Check: RMS=${rms.toFixed(4)}, SpeechRatio=${speechRatio.toFixed(4)}, HasSpeech=${hasSpeech}`);
@@ -278,7 +278,7 @@ $(document).ready(function () {
             if (!hasSpeech) {
                 console.warn("VAD: No speech detected in audio");
                 hideLoading();
-                instructionText.text("No speech detected. Try speaking louder?");
+                instructionText.text("I didn't quite catch that. Try speaking louder?");
                 return;
             }
 
