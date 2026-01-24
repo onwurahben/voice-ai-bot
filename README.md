@@ -1,19 +1,20 @@
 ---
 title: AI Voice Assistant
 emoji: 🎙️
-colorFrom: blue
-colorTo: purple
+colorFrom: red
+colorTo: green
 sdk: docker
 app_port: 7860
-pinned: false
+pinned: true
 license: mit
 tags:
-  - voice-assistant
-  - llama
-  - whisper
-  - text-to-speech
-  - groq
-  - conversational-ai
+- voice-assistant
+- llama
+- whisper
+- text-to-speech
+- groq
+- conversational-ai
+short_description: Conversational AI Voice assistant
 ---
 
 # 🎙️ AI Voice Assistant
