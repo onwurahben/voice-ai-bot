@@ -299,8 +299,11 @@ body {
 
 
 
-.col-12.text-center.d-flex.justify-content-around {
-    padding: 0 15px;
+.control-container {
+    gap: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #voice-options {
